@@ -443,7 +443,7 @@
 			});
 			if(!hasError) {
 				$('form#contact-form .btn-submit').fadeOut(1, function() {
-					$(this).parent().append('<input tabindex="5" value="Sending..." class="btn-submit btn">');
+					$(this).parent().append('<input tabindex="5" value="Enviando..." class="btn-submit btn">');
 				});
 				var formInput = $(this).serialize();
 				$.post($(this).attr('action'),formInput, function(data){
@@ -451,13 +451,13 @@
 					{
 						$('.form-error-msj').remove();
 						$('form#contact-form').slideUp("fast", function() {
-							$(this).before('<div class="alert alert-success">Your request will be reviewed by a member of our team.</div>');
+							$(this).before('<div class="alert alert-success">Su información será analizada por uno de los miembros de nuestro equipo.</div>');
 						});
 					}
 					else
 					{
 						$('.form-error-msj').remove();
-						$('form#contact-form').prepend('<div class="alert alert-danger form-error-msj">There was an error in the process, please try again.</div>');
+						$('form#contact-form').prepend('<div class="alert alert-danger form-error-msj">Ha surgido un error. Por favor intente nuevamente.</div>');
 						$('.form-error-msj').focus();
 					}
 				});
@@ -751,7 +751,17 @@
 	};
 
 	function twitter() {
-		console.log("tweet");
+	$(window).load(function(){
+		$('.tweet').tweet({
+			modpath: 'js/twitter/',
+			username: 'envato',
+			join_text: null,
+			avatar_size: null,
+			count: 3,
+			loading_text: 'loading twitter feed...',
+			template: "{text}{time}"
+		});
+	});
 	};
 
 	function homeBgPlayer() {
@@ -770,7 +780,7 @@
 	animations();
 	fitVid();
 	navBarf();
-	//homeBgPlayer();
+	homeBgPlayer();
 	selects();
 
 	if (!is_touch_device()) {

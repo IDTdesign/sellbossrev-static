@@ -751,7 +751,17 @@
 	};
 
 	function twitter() {
-		console.log("tweet");
+	$(window).load(function(){
+		$('.tweet').tweet({
+			modpath: 'js/twitter/',
+			username: 'envato',
+			join_text: null,
+			avatar_size: null,
+			count: 3,
+			loading_text: 'loading twitter feed...',
+			template: "{text}{time}"
+		});
+	});
 	};
 
 	function homeBgPlayer() {
@@ -770,7 +780,7 @@
 	animations();
 	fitVid();
 	navBarf();
-	//homeBgPlayer();
+	homeBgPlayer();
 	selects();
 
 	if (!is_touch_device()) {
